@@ -14,15 +14,24 @@ spec:
       containers:
       - name: mongo
         image: mongo
-#    resources:
- #     limits:
-  #      memory: "128Mi"
-   #     cpu: "500m"
+        volumeMounts:
+          - mountPath: /data/db
+            name: mongo-storage 
+        resources:
+          requests:
+            memory: 200Mi
+            cpu: 100m
+          limits:
+            memory: 200Mi
+            cpu: 100m
         ports:
         - name: mongo-port
           containerPort: 27017
           protocol: TCP
-
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
 ---
 apiVersion: v1
 kind: Service
