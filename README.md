@@ -15,6 +15,9 @@ So with this setup the request flow will look like this:
 2. Request goes to the `Ingress` which will than forward it to the Client `pod`, using the ingress capabillities the client will move the data to the server `Pod`(application backhand).
 3. Server `Pod` will then connect to the `internal service` of `MongoDB` (thats basically the DNS name of the service).
 4. The service will forward the request to the `MongoDB` pod and there the Data will be stored.
+
+
+
 ![alt text](https://github.com/tpaz1/k8s-app/blob/main/images/diagram-k8s-app.png)
 
 
